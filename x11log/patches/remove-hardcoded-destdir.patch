@@ -1,0 +1,16 @@
+--- a/Makefile	2016-12-31 01:31:10.914641288 +0100
++++ b/Makefile	2016-12-31 01:35:36.114849528 +0100
+@@ -32,10 +32,10 @@
+ 	rm -f $(TARGET)
+ 
+ install:
+-	mkdir -p $(DESTDIR)/usr/bin/
+-	install -m 0755 $(TARGET) $(DESTDIR)/usr/bin/
++	mkdir -p $(DESTDIR)/bin/
++	install -m 0755 $(TARGET) $(DESTDIR)/bin/
+ 
+ uninstall:
+-	rm -f $(DESTDIR)/usr/bin/$(TARGET)
++	rm -f $(DESTDIR)/bin/$(TARGET)
+ 
+ 

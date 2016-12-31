@@ -1,0 +1,31 @@
+--- a/Makefile	2016-12-31 00:51:28.122699300 +0100
++++ b/Makefile	2016-12-31 00:53:12.618787960 +0100
+@@ -17,15 +17,12 @@
+ EXTRA_LDFLAGS ?= -lX11 -lcurl
+ LDFLAGS ?= -lX11 -lcurl
+ TARGET ?= x11log
+-MANPAGE_POD ?= manpage.pod
+-POD2MAN ?= /usr/bin/pod2man
+ MANDIR ?= /usr/share/man/man1
+ 
+ all: $(TARGET)
+ 
+ $(TARGET): $(TARGET).o
+ 	$(CC) -o $@ $(TARGET).o $(LIBS) $(EXTRA_LDFLAGS) $(INCLUDES) $(DEFINES)
+-	$(POD2MAN) --center "Utils" $(MANPAGE_POD) > $(TARGET).1
+ 
+ $(TARGET).o: $(TARGET).c
+ 	$(CC) $(INCLUDES) $(DEFINES) $(CFLAGS) -c $(TARGET).c 
+@@ -36,12 +33,9 @@
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/usr/bin/
+-	mkdir -p $(DESTDIR)/usr/share/man/man1/
+ 	install -m 0755 $(TARGET) $(DESTDIR)/usr/bin/
+-	install -m 0644 $(TARGET).1 $(DESTDIR)/usr/share/man/man1/$(TARGET).1
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)/usr/bin/$(TARGET)
+-	rm -f $(DESTDIR)/usr/share/man/man1/$(TARGET).1
+ 
+ 
