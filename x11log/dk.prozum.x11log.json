@@ -4,36 +4,36 @@
     "runtime-version": "1.4",
     "sdk": "org.freedesktop.Sdk",
     "command": "x11log",
-	"finish-args": [
+    "finish-args": [
         "--filesystem=home",
         "--share=ipc", 
-		"--socket=x11",
+        "--socket=x11",
         "--share=network"
-	],
-	"build-options" : {
+    ],
+    "build-options" : {
         "env": {
             "DESTDIR": "/app"
         }
-	},
-	"modules": [
-		{
-			"name": "x11log",
-			"no-autogen": true,
+    },
+    "modules": [
+        {
+            "name": "x11log",
+            "no-autogen": true,
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/esonn/x11log.git",
                     "branch": "master"
                 },
-				{
-					"type": "patch",
+                {
+                    "type": "patch",
                     "path": "patches/remove-perl-dependency.patch"
-				},
-				{
-					"type": "patch",
+                },
+                {
+                    "type": "patch",
                     "path": "patches/remove-hardcoded-destdir.patch"
-				}
+                }
             ]
-		}
-	]
+        }
+    ]
 }
