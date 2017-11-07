@@ -8,20 +8,20 @@
         "--filesystem=home",
         "--socket=x11",
         "--share=network",
-        "--extra-data=remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz:1a1519adc6d62359f6f73bc2a4a6e76fb710fed78ca1bc09e46191e825d3058c:20777403::https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz"
+        "--extra-data=remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz:1a1519adc6d6:s2359f6f73bc2a4a6e76fb710fed78ca1bc09e46191e825d3058c:20777403::https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz"
             
     ],
     "modules": [
         {
             "name": "reMarkable",
-	        "buildsystem": "simple",
-      	    "build-commands": [
+            "buildsystem": "simple",
+            "build-commands": [
                 "install -D apply_extra /app/bin/apply_extra",
                 "install -D reMarkable /app/bin/reMarkable"
             ],
             "sources": [
                 {
-          	        "type": "script",
+                    "type": "script",
                     "dest-filename": "apply_extra",
                         "commands": [
                            "tar zxf remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz --strip-components=1",
@@ -50,11 +50,11 @@
                     ],
                     "build-commands": [
                             "qmake PREFIX=/app INCLUDEPATH=$(pwd)/src/websockets/",
-							"sed -i 's#QtWebSockets/##g' src/websockets/{qwebsocket,qwebsocketprotocol,qwebsocketprotocol_p,qwebsocketserver,qwebsocketcorsauthenticator,qmaskgenerator,qdefaultmaskgenerator_p}.h",
-							"sed -i 's#QtWebSockets/##g' src/imports/qmlwebsockets/{qqmlwebsocket,qqmlwebsocketserver}.h",
-							"sed -i 's/#include <QWebSocket>/#include \"qwebsocket.h\"/g' src/imports/qmlwebsockets/qqmlwebsocket.h",
-							"sed -i 's#<QtWebSockets/QWebSocket>#\"qwebsocket.h\"#g' src/imports/qmlwebsockets/qqmlwebsocket.cpp",
-							"sed -i 's/#include <QWebSocketServer>/#include \"qwebsocketserver.h\"/g' src/imports/qmlwebsockets/qqmlwebsocketserver.h",
+                            "sed -i 's#QtWebSockets/##g' src/websockets/{qwebsocket,qwebsocketprotocol,qwebsocketprotocol_p,qwebsocketserver,qwebsocketcorsauthenticator,qmaskgenerator,qdefaultmaskgenerator_p}.h",
+                            "sed -i 's#QtWebSockets/##g' src/imports/qmlwebsockets/{qqmlwebsocket,qqmlwebsocketserver}.h",
+                            "sed -i 's/#include <QWebSocket>/#include \"qwebsocket.h\"/g' src/imports/qmlwebsockets/qqmlwebsocket.h",
+                            "sed -i 's#<QtWebSockets/QWebSocket>#\"qwebsocket.h\"#g' src/imports/qmlwebsockets/qqmlwebsocket.cpp",
+                            "sed -i 's/#include <QWebSocketServer>/#include \"qwebsocketserver.h\"/g' src/imports/qmlwebsockets/qqmlwebsocketserver.h",
                             "make",
                             "make install INSTALL_ROOT=/app"
                     ]
