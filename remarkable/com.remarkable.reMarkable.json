@@ -8,7 +8,8 @@
         "--filesystem=home",
         "--socket=x11",
         "--share=network",
-        "--extra-data=remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz:1a1519adc6d6:s2359f6f73bc2a4a6e76fb710fed78ca1bc09e46191e825d3058c:20777403::https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz"
+        "--extra-data=remarkable-linux-client.tgz:1a1519adc6d62359f6f73bc2a4a6e76fb710fed78ca1bc09e46191e825d3058c:20777403::https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz",
+        "--extra-data=com.remarkable.reMarkable.png:0754c6fac1e36ca08207a36272af2bfbbc37cbd2e0b93a6447288e8106cf4c64:3437::https://avatars3.githubusercontent.com/u/19650282?s=200&v=4"
             
     ],
     "modules": [
@@ -24,9 +25,13 @@
                     "type": "script",
                     "dest-filename": "apply_extra",
                         "commands": [
-                           "tar zxf remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz --strip-components=1",
-                           "rm remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz",
-                           "rm README"
+                           "tar zxf remarkable-linux-client.tgz --strip-components=1",
+                           "rm remarkable-linux-client.tgz",
+                           "rm README",
+                           "mkdir -p export/share/applications",
+                           "echo '[Desktop Entry]\nVersion=1.0\nType=Application\nName=reMarkable\nIcon=com.remarkable.reMarkable\nExec=\"reMarkable\" %f\nComment=Manage reMarkable device\nTerminal=false' > export/share/applications/com.remarkable.reMarkable.desktop",
+                           "mkdir -p export/share/icons/hicolor/256x256/apps",
+                           "mv com.remarkable.reMarkable.png export/share/icons/hicolor/256x256/apps/"
                         ]
                 },
                 {
